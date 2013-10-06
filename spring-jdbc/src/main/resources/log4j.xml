@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='GBK' ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="FILE-DEBUG" class="org.apache.log4j.FileAppender">
+		<param name="Append" value="false" />
+		<param name="file" value="D:/logs/other/debug.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%7r] %6p - %30.30c - %m%n" />
+		</layout>
+		<!--<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="DEBUG" />
+			<param name="LevelMax" value="INFO "/>
+		</filter>-->
+	</appender>
+	<!-- 
+	<appender name="FILE-DEBUG-DATE" class="com.jd.payment.risk.log.RiskFileAppender">
+    	<param name="Threshold" value="DEBUG"/>
+        <param name="File" value="D:/logs/other/test.log"/>
+        <param name="Append" value="false"/>
+        <param name="Encoding" value="UTF-8" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss}\t%F\t%L\t%m%n"/>
+        </layout>
+    </appender>
+    
+    <appender name="FILE-DEBUG-ANSY" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="128"/>
+		<appender-ref ref="FILE-DEBUG-DATE"/>
+	</appender>
+	 -->
+	<appender name="FILE-INFO" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="DatePattern" value="'.'yyyy-ww" />
+		<param name="Append" value="true" />
+		<param name="file" value="D:/logs/other/info.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss}\t[%r]\t%F\t%L\t%6p\t%c\t%m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="INFO" />
+			<!--<param name="LevelMax" value="FATAL "/>-->
+		</filter>
+	</appender>
+	
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss}\t[%r]\t%F\t%L\t%6p\t%c\t%m%n" />
+		</layout>
+	</appender>
+	
+	<!--================ ↑↑APPENDER || CATEGORY↓↓ ======================-->
+	<!-- 
+	<logger name="com.jd.payment.risk.audi" additivity="true">
+		<level value="INFO"></level>
+		<appender-ref ref="FILE-DEBUG-ANSY" />
+	</logger>
+	 -->
+	<root>
+		<priority value="INFO" />
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE-DEBUG" />
+		<appender-ref ref="FILE-INFO" />
+	</root>
+</log4j:configuration>

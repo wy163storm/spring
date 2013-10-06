@@ -1,0 +1,7 @@
+db.demo.driver=com.mysql.jdbc.Driver
+db.demo.url=jdbc:mysql://localhost:3306/demo?useUnicode=true&amp;characterEncoding=UTF-8
+db.demo.username=root
+db.demo.password=risk
+db.demo.maxPoolSize=20
+db.demo.minPoolSize=1
+c3p0.acquire_increment=2
